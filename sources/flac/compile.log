@@ -1,0 +1,281 @@
+In file included from encode.c:32:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from main.c:38:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from foreign_metadata.c:29:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from ../libFLAC/format.c:42:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/format.c:535:9: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        return flac_min(FLAC__MAX_RICE_PARTITION_ORDER, max_rice_partition_order);
+               ^
+2 warnings generated.
+../share/grabbag/file.c:60:9: warning: implicit declaration of function 'chmod' is invalid in C99 [-Wimplicit-function-declaration]
+                (void)flac_chmod(destpath, srcstat.st_mode);
+                      ^
+../../include/share/compat.h:174:20: note: expanded from macro 'flac_chmod'
+#define flac_chmod chmod
+                   ^
+../share/grabbag/file.c:108:11: warning: implicit declaration of function 'chmod' is invalid in C99 [-Wimplicit-function-declaration]
+                if(0 != flac_chmod(filename, stats.st_mode))
+                        ^
+../../include/share/compat.h:174:20: note: expanded from macro 'flac_chmod'
+#define flac_chmod chmod
+                   ^
+2 warnings generated.
+In file included from ../libFLAC/stream_decoder.c:44:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/stream_decoder.c:2761:106: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+        if(!FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size(partitioned_rice_contents, flac_max(6u, partition_order))) {
+                                                                                                                ^
+2 warnings generated.
+In file included from ../libFLAC/stream_encoder.c:67:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/stream_encoder.c:681:47: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                        encoder->protected_->qlp_coeff_precision = flac_max(FLAC__MIN_QLP_COEFF_PRECISION, 2 + encoder->protected_->bits_per_sample / 2);
+                                                                   ^
+../libFLAC/stream_encoder.c:1714:30: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                        FLAC__real overlap = si_1?flac_min((FLAC__real)strtod(si_1+1, 0),0.99f):0.1f;
+                                                  ^
+../libFLAC/stream_encoder.c:1735:30: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                        FLAC__real overlap = si_1?flac_min((FLAC__real)strtod(si_1+1, 0),0.99f):0.2f;
+                                                  ^
+../libFLAC/stream_encoder.c:1876:10: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        value = flac_min(value, (FLAC__U64L(1) << FLAC__STREAM_METADATA_STREAMINFO_TOTAL_SAMPLES_LEN) - 1);
+                ^
+../libFLAC/stream_encoder.c:2154:22: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                const unsigned n = flac_min(blocksize+OVERREAD_-encoder->private_->current_sample_number, samples-j);
+                                   ^
+../libFLAC/stream_encoder.c:2221:100: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                                append_to_verify_fifo_interleaved_(&encoder->private_->verify.input_fifo, buffer, j, channels, flac_min(blocksize+OVERREAD_-encoder->private_->current_sample_number, samples-j));
+                                                                                                                               ^
+../libFLAC/stream_encoder.c:2256:100: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                                append_to_verify_fifo_interleaved_(&encoder->private_->verify.input_fifo, buffer, j, channels, flac_min(blocksize+OVERREAD_-encoder->private_->current_sample_number, samples-j));
+                                                                                                                               ^
+../libFLAC/stream_encoder.c:2602:66: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                encoder->private_->streaminfo.data.stream_info.min_framesize = flac_min(bytes, encoder->private_->streaminfo.data.stream_info.min_framesize);
+                                                                               ^
+../libFLAC/stream_encoder.c:2603:66: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                encoder->private_->streaminfo.data.stream_info.max_framesize = flac_max(bytes, encoder->private_->streaminfo.data.stream_info.max_framesize);
+                                                                               ^
+../libFLAC/stream_encoder.c:2694:39: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                encoder->private_->frames_written = flac_max(encoder->private_->frames_written, encoder->private_->current_frame_number+1);
+                                                    ^
+../libFLAC/stream_encoder.c:2705:15: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+        FLAC__byte b[flac_max(6u, FLAC__STREAM_METADATA_SEEKPOINT_LENGTH)];
+                     ^
+../libFLAC/stream_encoder.c:3121:25: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                max_partition_order = flac_min(max_partition_order, encoder->protected_->max_residual_partition_order);
+                                      ^
+../libFLAC/stream_encoder.c:3123:24: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        min_partition_order = flac_min(min_partition_order, max_partition_order);
+                              ^
+../libFLAC/stream_encoder.c:3536:37: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                                                                                max_qlp_coeff_precision = flac_min(32 - subframe_bps - FLAC__bitmath_ilog2(lpc_order), FLAC__MAX_QLP_COEFF_PRECISION);
+                                                                                                          ^
+../libFLAC/stream_encoder.c:3537:37: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                                                                                max_qlp_coeff_precision = flac_max(max_qlp_coeff_precision, min_qlp_coeff_precision);
+                                                                                                          ^
+../libFLAC/stream_encoder.c:3781:25: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                qlp_coeff_precision = flac_min(qlp_coeff_precision, 32 - subframe_bps - FLAC__bitmath_ilog2(order));
+                                      ^
+../libFLAC/stream_encoder.c:3885:24: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        min_partition_order = flac_min(min_partition_order, max_partition_order);
+                              ^
+../libFLAC/stream_encoder.c:3939:81: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size(prc, flac_max(6u, best_partition_order));
+                                                                                              ^
+../libFLAC/stream_encoder.c:4067:43: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+                        raw_bits_per_partition[to_partition] = flac_max(m, raw_bits_per_partition[from_partition]);
+                                                               ^
+../libFLAC/stream_encoder.c:4145:102: warning: implicit declaration of function 'flac_max' is invalid in C99 [-Wimplicit-function-declaration]
+        FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size(partitioned_rice_contents, flac_max(6u, partition_order));
+                                                                                                            ^
+warning: prototype-less function used with conflicting signatures: flac_min
+warning: prototype-less function used with conflicting signatures: flac_min
+21 warnings generated.
+../share/grabbag/replaygain.c:85:8: warning: implicit declaration of function 'chmod' is invalid in C99 [-Wimplicit-function-declaration]
+        (void)flac_chmod(filename, stats->st_mode);
+              ^
+../../include/share/compat.h:174:20: note: expanded from macro 'flac_chmod'
+#define flac_chmod chmod
+                   ^
+1 warning generated.
+In file included from ../libFLAC/metadata_object.c:44:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/metadata_object.c:1741:18: warning: result of comparison of constant 18446744073709551615 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+                if (new_length >= SIZE_MAX) /* overflow check */
+                    ~~~~~~~~~~ ^  ~~~~~~~~
+../libFLAC/metadata_object.c:1772:18: warning: result of comparison of constant 18446744073709551615 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+                if (new_length >= SIZE_MAX) /* overflow check */
+                    ~~~~~~~~~~ ^  ~~~~~~~~
+3 warnings generated.
+In file included from ../share/grabbag/picture.c:24:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from ../share/utf8/utf8.c:34:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from ../libFLAC/metadata_iterators.c:49:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/metadata_iterators.c:3229:7: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                n = flac_min(sizeof(buffer), (size_t)bytes);
+                    ^
+../libFLAC/metadata_iterators.c:3251:7: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                n = flac_min(sizeof(buffer), (size_t)bytes);
+                    ^
+../libFLAC/metadata_iterators.c:3432:8: warning: implicit declaration of function 'chmod' is invalid in C99 [-Wimplicit-function-declaration]
+        (void)flac_chmod(filename, stats->st_mode);
+              ^
+../../include/share/compat.h:174:20: note: expanded from macro 'flac_chmod'
+#define flac_chmod chmod
+                   ^
+../libFLAC/metadata_iterators.c:3435:20: warning: implicit declaration of function 'chown' is invalid in C99 [-Wimplicit-function-declaration]
+        FLAC_CHECK_RETURN(chown(filename, stats->st_uid, -1));
+                          ^
+../libFLAC/metadata_iterators.c:3436:20: warning: implicit declaration of function 'chown' is invalid in C99 [-Wimplicit-function-declaration]
+        FLAC_CHECK_RETURN(chown(filename, -1, stats->st_gid));
+                          ^
+6 warnings generated.
+../libFLAC/bitreader.c:520:8: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                        m = flac_min(8-n, bits);
+                            ^
+1 warning generated.
+In file included from ../libFLAC/md5.c:9:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from ../libFLAC/memory.c:43:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/memory.c:75:14: warning: result of comparison of constant 4611686018427387903 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+        if(elements > SIZE_MAX / sizeof(*pu)) /* overflow check */
+           ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+../libFLAC/memory.c:104:14: warning: result of comparison of constant 4611686018427387903 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+        if(elements > SIZE_MAX / sizeof(*pu)) /* overflow check */
+           ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+../libFLAC/memory.c:133:14: warning: result of comparison of constant 2305843009213693951 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+        if(elements > SIZE_MAX / sizeof(*pu)) /* overflow check */
+           ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+../libFLAC/memory.c:162:14: warning: result of comparison of constant 4611686018427387903 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+        if(elements > SIZE_MAX / sizeof(*pu)) /* overflow check */
+           ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+../libFLAC/memory.c:193:14: warning: result of comparison of constant 4611686018427387903 with expression of type 'size_t' (aka 'unsigned long') is always false [-Wtautological-constant-out-of-range-compare]
+        if(elements > SIZE_MAX / sizeof(*pu)) /* overflow check */
+           ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+6 warnings generated.
+../libFLAC/fixed.c:238:21: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        if(total_error_0 < flac_min(flac_min(flac_min(total_error_1, total_error_2), total_error_3), total_error_4))
+                           ^
+../libFLAC/fixed.c:300:21: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+        if(total_error_0 < flac_min(flac_min(flac_min(total_error_1, total_error_2), total_error_3), total_error_4))
+                           ^
+warning: prototype-less function used with conflicting signatures: flac_min
+warning: prototype-less function used with conflicting signatures: flac_min
+2 warnings generated.
+In file included from ../libFLAC/bitwriter.c:43:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+../libFLAC/bitwriter.c:298:7: warning: implicit declaration of function 'flac_min' is invalid in C99 [-Wimplicit-function-declaration]
+                n = flac_min(FLAC__BITS_PER_WORD - bw->bits, bits);
+                    ^
+2 warnings generated.
+In file included from ../share/replaygain_analysis/replaygain_analysis.c:101:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+In file included from ../share/utf8/charset.c:38:
+../../include/share/alloc.h:52:9: warning: 'SIZE_MAX' macro redefined [-Wmacro-redefined]
+#define SIZE_MAX SIZE_T_MAX
+        ^
+../../../../wasi-sdk-11.0/share/wasi-sysroot/include/bits/stdint.h:20:9: note: previous definition is here
+#define SIZE_MAX        UINT32_MAX
+        ^
+1 warning generated.
+../libFLAC/chmodchown.c:4:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+../libFLAC/chmodchown.c:8:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+2 warnings generated.
+wasm-ld: warning: function signature mismatch: flac_min
+>>> defined as (i32, i64) -> i32 in /tmp/fixed-63193e.o
+>>> defined as (i32, i32) -> i32 in /tmp/minmax-3c3505.o
+AFL shim insertion summary
+	br_if 5986
+	br_table 79
+	loop 731
+	if-else 0
+	function enter 810
+	block-end 5872
+trace_bits size 65536

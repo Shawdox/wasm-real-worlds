@@ -1,0 +1,1204 @@
+--------------------
+./configure
+2024年 07月 31日 星期三 23:18:35 CST
+=== ztest2286939.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest2286939.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest2286939.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest2286939.c
+
+Checking for shared library support...
+=== ztest2286939.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest2286939.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest2286939.so ztest2286939.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest2286939.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest2286939.c
+Checking for size_t... Yes.
+
+
+=== ztest2286939.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest2286939.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest2286939 ztest2286939.c
+Checking for strerror... Yes.
+
+=== ztest2286939.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking for unistd.h... Yes.
+
+=== ztest2286939.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking for stdarg.h... Yes.
+
+=== ztest2286939.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest2286939.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest2286939 ztest2286939.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest2286939.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest2286939.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2286939.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 07月 31日 星期三 23:22:35 CST
+=== ztest2290672.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest2290672.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest2290672.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest2290672.c
+
+Checking for shared library support...
+=== ztest2290672.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest2290672.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest2290672.so ztest2290672.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest2290672.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest2290672.c
+Checking for size_t... Yes.
+
+
+=== ztest2290672.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest2290672.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest2290672 ztest2290672.c
+Checking for strerror... Yes.
+
+=== ztest2290672.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking for unistd.h... Yes.
+
+=== ztest2290672.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking for stdarg.h... Yes.
+
+=== ztest2290672.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest2290672.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest2290672 ztest2290672.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest2290672.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest2290672.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest2290672.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 08月 17日 星期六 16:37:26 CST
+=== ztest4153627.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest4153627.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest4153627.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest4153627.c
+
+Checking for shared library support...
+=== ztest4153627.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest4153627.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest4153627.so ztest4153627.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest4153627.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest4153627.c
+Checking for size_t... Yes.
+
+
+=== ztest4153627.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest4153627.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest4153627 ztest4153627.c
+Checking for strerror... Yes.
+
+=== ztest4153627.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking for unistd.h... Yes.
+
+=== ztest4153627.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking for stdarg.h... Yes.
+
+=== ztest4153627.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest4153627.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest4153627 ztest4153627.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest4153627.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest4153627.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest4153627.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 08月 18日 星期日 14:11:45 CST
+=== ztest58722.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest58722.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest58722.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest58722.c
+
+Checking for shared library support...
+=== ztest58722.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest58722.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest58722.so ztest58722.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest58722.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest58722.c
+Checking for size_t... Yes.
+
+
+=== ztest58722.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest58722.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest58722 ztest58722.c
+Checking for strerror... Yes.
+
+=== ztest58722.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking for unistd.h... Yes.
+
+=== ztest58722.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking for stdarg.h... Yes.
+
+=== ztest58722.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest58722.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest58722 ztest58722.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest58722.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest58722.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest58722.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 08月 18日 星期日 14:44:13 CST
+=== ztest66135.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest66135.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest66135.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest66135.c
+
+Checking for shared library support...
+=== ztest66135.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest66135.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest66135.so ztest66135.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest66135.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest66135.c
+Checking for size_t... Yes.
+
+
+=== ztest66135.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest66135.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest66135 ztest66135.c
+Checking for strerror... Yes.
+
+=== ztest66135.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking for unistd.h... Yes.
+
+=== ztest66135.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking for stdarg.h... Yes.
+
+=== ztest66135.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest66135.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest66135 ztest66135.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest66135.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest66135.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest66135.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 08月 18日 星期日 18:32:35 CST
+=== ztest83167.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest83167.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest83167.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest83167.c
+
+Checking for shared library support...
+=== ztest83167.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest83167.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest83167.so ztest83167.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest83167.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest83167.c
+Checking for size_t... Yes.
+
+
+=== ztest83167.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest83167.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest83167 ztest83167.c
+Checking for strerror... Yes.
+
+=== ztest83167.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking for unistd.h... Yes.
+
+=== ztest83167.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking for stdarg.h... Yes.
+
+=== ztest83167.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest83167.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest83167 ztest83167.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest83167.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest83167.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest83167.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure
+2024年 08月 18日 星期日 19:22:46 CST
+=== ztest95996.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c ztest95996.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest95996.c ===
+int foo() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest95996.c
+
+Checking for shared library support...
+=== ztest95996.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -w -c -O3 -fPIC ztest95996.c
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest95996.so ztest95996.o
+clang-10: warning: argument unused during compilation: '-shared' [-Wunused-command-line-argument]
+wasm-ld: error: unknown argument: -soname
+wasm-ld: error: unknown argument: --version-script
+wasm-ld: error: unknown file type: libz.so.1
+wasm-ld: error: unknown file type: zlib.map
+clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot.
+
+=== ztest95996.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 ztest95996.c
+Checking for size_t... Yes.
+
+
+=== ztest95996.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest95996.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest95996 ztest95996.c
+Checking for strerror... Yes.
+
+=== ztest95996.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking for unistd.h... Yes.
+
+=== ztest95996.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking for stdarg.h... Yes.
+
+=== ztest95996.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest95996.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -O3 -D_LARGEFILE64_SOURCE=1 -o ztest95996 ztest95996.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest95996.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest95996.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -c -O3 -D_LARGEFILE64_SOURCE=1 ztest95996.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static all64
+AR = ../../../../../wasi-sdk-11.0/bin/ar
+ARFLAGS = rc
+CC = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ../../../../../wasi-sdk-11.0/bin/clang --sysroot=../../../../../wasi-sdk-11.0/share/wasi-sysroot
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ../../../../../wasi-sdk-11.0/bin/ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+

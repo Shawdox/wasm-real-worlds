@@ -1,0 +1,19 @@
+jbig2_arith.c:200:16: warning: result of '2 ^ 1' is 3; did you mean '1 << 1' (2)? [-Wxor-used-as-pow]
+    {0x3401, 2 ^ 1, 6 ^ 1},
+             ~~^~~
+             1 << 1
+jbig2_arith.c:200:16: note: replace expression with '0x2 ^ 1' to silence this warning
+jbig2_arith.c:208:17: warning: result of '10 ^ 9' is 3; did you mean '1e9'? [-Wxor-used-as-pow]
+    {0x3801, 10 ^ 9, 14 ^ 9},
+             ~~~^~~
+             1e9
+jbig2_arith.c:208:17: note: replace expression with '0xA ^ 9' to silence this warning
+2 warnings generated.
+AFL shim insertion summary
+	br_if 1946
+	br_table 29
+	loop 242
+	if-else 0
+	function enter 217
+	block-end 1757
+trace_bits size 65536
